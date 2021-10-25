@@ -11,13 +11,13 @@ Menu::Menu()
 
 }
 
-void Menu::addMenu(char *Description, void (*f) (void))
+void Menu::addMenu(string Description, void (*f) (void))
 {
 
     if(count < MAXCOUNT)
     {
         this->mi[count].func = f;
-        strcpy(this->mi[count].descript, Description);
+        this->mi[count].descript = Description;
         count++;
     }
 }
@@ -30,7 +30,7 @@ void Menu::runMenu()
         system("CLS");
         for(int i = 0; i < count; i++)
         {
-            cout << this->mi[i].decript << endl;
+            cout << this->mi[i].descript << endl;
         }
         runSelection();
     }
@@ -42,5 +42,12 @@ void Menu::runSelection()
 
     cin >> select;
     if (select <= count)
-        this.mi[select - 1].func();
+        this->mi[select - 1].func();
 }
+
+void Menu::waitKey()
+{
+	cout << "Press any key to continue" << endl;
+	getchar();
+}
+

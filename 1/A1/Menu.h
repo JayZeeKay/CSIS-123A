@@ -5,19 +5,20 @@ const int MAXCOUNT = 20;
 struct menuItem
 {
     void (*func) ();
-    char descript[50];
+    string descript;
 };
 
 class Menu
 {
     private:
-        menuItem mi[MAXOUNT];
-        int count = 0;
+        menuItem mi[MAXCOUNT];
+        int count;
         void runSelection();
     public:
         Menu();
-        void addMenu(char *Description, void (*f) ());
+        void addMenu(string Description, void (*f) ());
         void runMenu();
+        void waitKey();
 };
 
 #endif
